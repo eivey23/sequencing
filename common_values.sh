@@ -1,0 +1,1 @@
+INDEX="sars-cov2-wa1-2020-index/sars-cov2-wa1-2020"
