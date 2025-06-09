@@ -1,3 +1,5 @@
+set -euo pipefail
+
 source ./common_values.sh
 
 mkdir -p "$(dirname "$INDEX")"

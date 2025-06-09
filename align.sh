@@ -1,3 +1,5 @@
+set -euo pipefail
+
 source ./common_values.sh
 
 mkdir -p alignment
@@ -11,7 +13,8 @@ for BASE_FILE in "Exp1sh90KP3" "Exp1shCP3" "Exp4sh90KP3" "Exp4shCP3"; do
         R2_FILE="../30-1189397265/00_fastq/${BASE_FILE}_R2_001.fastq.gz"
         echo R2: $R2_FILE
 
-        bowtie2 -x "$CURRENT_INDEX" -1 "$R1_FILE" -2 "$R2_FILE" -S "alignment/$(basename "$CURRENT_INDEX")---$BASE_FILE.sam"
+        mkdir -p "alignment/sam/$BASE_FILE" "alignment/results/$BASE_FILE"
+        bowtie2 -x "$CURRENT_INDEX" -1 "$R1_FILE" -2 "$R2_FILE" -S "alignment/sam/$BASE_FILE/$(basename "$CURRENT_INDEX")---$BASE_FILE.sam" 2>&1 | tee "alignment/results/$BASE_FILE/$(basename "$CURRENT_INDEX")---$BASE_FILE.results"
         echo
     done
 done
