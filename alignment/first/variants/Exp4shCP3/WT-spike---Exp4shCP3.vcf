@@ -1,0 +1,33 @@
+##fileformat=VCFv4.2
+##FILTER=<ID=PASS,Description="All filters passed">
+##bcftoolsVersion=1.22+htslib-1.22
+##bcftoolsCommand=mpileup --threads 8 -f WT-spike.FASTA alignment/first/bam/Exp4shCP3/WT-spike---Exp4shCP3.sorted.bam
+##reference=file://WT-spike.FASTA
+##contig=<ID=WA-1,length=3822>
+##ALT=<ID=*,Description="Represents allele(s) other than observed.">
+##INFO=<ID=INDEL,Number=0,Type=Flag,Description="Indicates that the variant is an INDEL.">
+##INFO=<ID=IDV,Number=1,Type=Integer,Description="Maximum number of raw reads supporting an indel">
+##INFO=<ID=IMF,Number=1,Type=Float,Description="Maximum fraction of raw reads supporting an indel">
+##INFO=<ID=DP,Number=1,Type=Integer,Description="Raw read depth">
+##INFO=<ID=VDB,Number=1,Type=Float,Description="Variant Distance Bias for filtering splice-site artefacts in RNA-seq data (bigger is better)",Version="3">
+##INFO=<ID=RPBZ,Number=1,Type=Float,Description="Mann-Whitney U-z test of Read Position Bias (closer to 0 is better)">
+##INFO=<ID=MQBZ,Number=1,Type=Float,Description="Mann-Whitney U-z test of Mapping Quality Bias (closer to 0 is better)">
+##INFO=<ID=BQBZ,Number=1,Type=Float,Description="Mann-Whitney U-z test of Base Quality Bias (closer to 0 is better)">
+##INFO=<ID=MQSBZ,Number=1,Type=Float,Description="Mann-Whitney U-z test of Mapping Quality vs Strand Bias (closer to 0 is better)">
+##INFO=<ID=SCBZ,Number=1,Type=Float,Description="Mann-Whitney U-z test of Soft-Clip Length Bias (closer to 0 is better)">
+##INFO=<ID=SGB,Number=1,Type=Float,Description="Segregation based metric, http://samtools.github.io/bcftools/rd-SegBias.pdf">
+##INFO=<ID=MQ0F,Number=1,Type=Float,Description="Fraction of MQ0 reads (smaller is better)">
+##FORMAT=<ID=PL,Number=G,Type=Integer,Description="List of Phred-scaled genotype likelihoods">
+##FORMAT=<ID=AD,Number=R,Type=Integer,Description="Allelic depths (high-quality bases)">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##INFO=<ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+##INFO=<ID=AN,Number=1,Type=Integer,Description="Total number of alleles in called genotypes">
+##INFO=<ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+##INFO=<ID=MQ,Number=1,Type=Integer,Description="Average mapping quality">
+##bcftools_callVersion=1.22+htslib-1.22
+##bcftools_callCommand=call --ploidy 1 -v -m alignment/first/bcf/Exp4shCP3/WT-spike---Exp4shCP3.bcf; Date=Tue Jul  1 18:36:46 2025
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	alignment/first/bam/Exp4shCP3/WT-spike---Exp4shCP3.sorted.bam
+WA-1	1926	.	T	TCTTCCGA	146.375	.	INDEL;IDV=18;IMF=0.642857;DP=28;VDB=1.87689e-09;SGB=-0.688148;RPBZ=2.88087;MQBZ=1.86192;BQBZ=1.41421;SCBZ=0;MQ0F=0.0714286;AC=1;AN=1;DP4=2,0,14,1;MQ=34	GT:PL:AD	1:173,0:2,15
+WA-1	1928	.	TTC	TTCCGATCTC	27.9064	.	INDEL;IDV=11;IMF=0.323529;DP=34;VDB=1.12289e-05;SGB=-0.662043;RPBZ=-3.38029;MQBZ=-1.02956;BQBZ=1.13035;SCBZ=0;MQ0F=0.294118;AC=1;AN=1;DP4=7,0,9,0;MQ=13	GT:PL:AD	1:55,0:7,8
+WA-1	1963	.	C	T	32.4878	.	DP=279;VDB=0;SGB=-0.693147;RPBZ=-1.34228;MQBZ=2.21148;MQSBZ=-1.12895;BQBZ=-1.11035;SCBZ=0;MQ0F=0.0394265;AC=1;AN=1;DP4=109,3,160,4;MQ=39	GT:PL:AD	1:255,195:112,163
+WA-1	2044	.	C	T	20.5595	.	DP=304;VDB=0;SGB=-0.693147;RPBZ=1.23;MQBZ=0.236242;MQSBZ=-2.86304;BQBZ=-1.44768;SCBZ=0;MQ0F=0.00328947;AC=1;AN=1;DP4=107,5,180,5;MQ=40	GT:PL:AD	1:255,207:112,184

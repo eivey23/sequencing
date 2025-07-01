@@ -42,17 +42,28 @@ for BASE_FILE in "${BASE_FILES[@]}"; do
         echo "R2: $R2_FILE"
 
         OUTPUT_SAM="$OUTPUT_BASE/sam/$BASE_FILE/$CURRENT_INDEX---$BASE_FILE.sam"
-        OUTPUT_BAM="$OUTPUT_BASE/bam/$BASE_FILE/$CURRENT_INDEX---$BASE_FILE.sorted.bam"
         OUTPUT_RESULTS="$OUTPUT_BASE/results/$BASE_FILE/$CURRENT_INDEX---$BASE_FILE.results"
+        OUTPUT_BAM="$OUTPUT_BASE/bam/$BASE_FILE/$CURRENT_INDEX---$BASE_FILE.sorted.bam"
+        OUTPUT_BCF="$OUTPUT_BASE/bcf/$BASE_FILE/$CURRENT_INDEX---$BASE_FILE.bcf"
+        OUTPUT_VARIANTS="$OUTPUT_BASE/variants/$BASE_FILE/$CURRENT_INDEX---$BASE_FILE.vcf"
 
         echo "Output SAM: $OUTPUT_SAM"
+        echo "Output BAM: $OUTPUT_BAM"
         echo "Output Results: $OUTPUT_RESULTS"
 
-        mkdir -p "$OUTPUT_BASE/sam/$BASE_FILE" "$OUTPUT_BASE/bam/$BASE_FILE" "$OUTPUT_BASE/results/$BASE_FILE"
-        time bowtie2 --threads 8 -x "$BOWTIE_INDEX_DIR/$CURRENT_INDEX" -1 "$R1_FILE" -2 "$R2_FILE" -S "$OUTPUT_SAM" 2>&1 | tee "$OUTPUT_RESULTS"
-        samtools view --threads 8 -Sb "$OUTPUT_SAM" | samtools sort - > "$OUTPUT_BAM"
-        sleep 1
-        samtools index --threads 8 "$OUTPUT_BAM"
+        mkdir -p "$OUTPUT_BASE/sam/$BASE_FILE" "$OUTPUT_BASE/results/$BASE_FILE" "$OUTPUT_BASE/bam/$BASE_FILE" "$OUTPUT_BASE/bcf/$BASE_FILE" "$OUTPUT_BASE/variants/$BASE_FILE"
+        
+        # Run bowtie2 to find alignments
+        # time bowtie2 --threads 8 -x "$BOWTIE_INDEX_DIR/$CURRENT_INDEX" -1 "$R1_FILE" -2 "$R2_FILE" -S "$OUTPUT_SAM" 2>&1 | tee "$OUTPUT_RESULTS"
+        
+        # Post-processing the SAM file
+        # samtools view --threads 8 -Sb "$OUTPUT_SAM" | samtools sort - > "$OUTPUT_BAM"
+        # sleep 1
+        # samtools index --threads 8 "$OUTPUT_BAM"
+
+        # variant calling
+        bcftools mpileup --threads 8 -f "$CURRENT_INDEX.FASTA" "$OUTPUT_BAM" > "$OUTPUT_BCF"
+        bcftools call --ploidy 1 -v -m "$OUTPUT_BCF" > "$OUTPUT_VARIANTS"
         echo
     done
 done

@@ -1,0 +1,31 @@
+##fileformat=VCFv4.2
+##FILTER=<ID=PASS,Description="All filters passed">
+##bcftoolsVersion=1.22+htslib-1.22
+##bcftoolsCommand=mpileup --threads 8 -f mut-spike.FASTA alignment/second/bam/Exp2sh90KP3_S2_L001/mut-spike---Exp2sh90KP3_S2_L001.sorted.bam
+##reference=file://mut-spike.FASTA
+##contig=<ID=mut-spike,length=3786>
+##ALT=<ID=*,Description="Represents allele(s) other than observed.">
+##INFO=<ID=INDEL,Number=0,Type=Flag,Description="Indicates that the variant is an INDEL.">
+##INFO=<ID=IDV,Number=1,Type=Integer,Description="Maximum number of raw reads supporting an indel">
+##INFO=<ID=IMF,Number=1,Type=Float,Description="Maximum fraction of raw reads supporting an indel">
+##INFO=<ID=DP,Number=1,Type=Integer,Description="Raw read depth">
+##INFO=<ID=VDB,Number=1,Type=Float,Description="Variant Distance Bias for filtering splice-site artefacts in RNA-seq data (bigger is better)",Version="3">
+##INFO=<ID=RPBZ,Number=1,Type=Float,Description="Mann-Whitney U-z test of Read Position Bias (closer to 0 is better)">
+##INFO=<ID=MQBZ,Number=1,Type=Float,Description="Mann-Whitney U-z test of Mapping Quality Bias (closer to 0 is better)">
+##INFO=<ID=BQBZ,Number=1,Type=Float,Description="Mann-Whitney U-z test of Base Quality Bias (closer to 0 is better)">
+##INFO=<ID=MQSBZ,Number=1,Type=Float,Description="Mann-Whitney U-z test of Mapping Quality vs Strand Bias (closer to 0 is better)">
+##INFO=<ID=SCBZ,Number=1,Type=Float,Description="Mann-Whitney U-z test of Soft-Clip Length Bias (closer to 0 is better)">
+##INFO=<ID=SGB,Number=1,Type=Float,Description="Segregation based metric, http://samtools.github.io/bcftools/rd-SegBias.pdf">
+##INFO=<ID=MQ0F,Number=1,Type=Float,Description="Fraction of MQ0 reads (smaller is better)">
+##FORMAT=<ID=PL,Number=G,Type=Integer,Description="List of Phred-scaled genotype likelihoods">
+##FORMAT=<ID=AD,Number=R,Type=Integer,Description="Allelic depths (high-quality bases)">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##INFO=<ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+##INFO=<ID=AN,Number=1,Type=Integer,Description="Total number of alleles in called genotypes">
+##INFO=<ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+##INFO=<ID=MQ,Number=1,Type=Integer,Description="Average mapping quality">
+##bcftools_callVersion=1.22+htslib-1.22
+##bcftools_callCommand=call --ploidy 1 -v -m alignment/second/bcf/Exp2sh90KP3_S2_L001/mut-spike---Exp2sh90KP3_S2_L001.bcf; Date=Tue Jul  1 18:36:36 2025
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	alignment/second/bam/Exp2sh90KP3_S2_L001/mut-spike---Exp2sh90KP3_S2_L001.sorted.bam
+mut-spike	1921	.	A	G	6.40725	.	DP=250;VDB=0;SGB=-0.693147;RPBZ=-5.68982;MQBZ=-0.925838;MQSBZ=0.914526;BQBZ=2.00179;SCBZ=0;MQ0F=0.088;AC=1;AN=1;DP4=7,1,62,0;MQ=22	GT:PL:AD	1:32,0:8,62
+mut-spike	1926	.	T	C	22.3378	.	DP=255;VDB=1.4013e-45;SGB=-0.693147;RPBZ=-7.33534;MQBZ=-1.82881;MQSBZ=0.622554;BQBZ=0.268745;SCBZ=0;MQ0F=0.0941176;AC=1;AN=1;DP4=5,0,84,1;MQ=24	GT:PL:AD	1:49,0:5,85

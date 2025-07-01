@@ -1,0 +1,35 @@
+##fileformat=VCFv4.2
+##FILTER=<ID=PASS,Description="All filters passed">
+##bcftoolsVersion=1.22+htslib-1.22
+##bcftoolsCommand=mpileup --threads 8 -f sars-cov2-wa1-2020.FASTA alignment/second/bam/Exp3sh90KP3_S3_L001/sars-cov2-wa1-2020---Exp3sh90KP3_S3_L001.sorted.bam
+##reference=file://sars-cov2-wa1-2020.FASTA
+##contig=<ID=MT246667.1,length=29867>
+##ALT=<ID=*,Description="Represents allele(s) other than observed.">
+##INFO=<ID=INDEL,Number=0,Type=Flag,Description="Indicates that the variant is an INDEL.">
+##INFO=<ID=IDV,Number=1,Type=Integer,Description="Maximum number of raw reads supporting an indel">
+##INFO=<ID=IMF,Number=1,Type=Float,Description="Maximum fraction of raw reads supporting an indel">
+##INFO=<ID=DP,Number=1,Type=Integer,Description="Raw read depth">
+##INFO=<ID=VDB,Number=1,Type=Float,Description="Variant Distance Bias for filtering splice-site artefacts in RNA-seq data (bigger is better)",Version="3">
+##INFO=<ID=RPBZ,Number=1,Type=Float,Description="Mann-Whitney U-z test of Read Position Bias (closer to 0 is better)">
+##INFO=<ID=MQBZ,Number=1,Type=Float,Description="Mann-Whitney U-z test of Mapping Quality Bias (closer to 0 is better)">
+##INFO=<ID=BQBZ,Number=1,Type=Float,Description="Mann-Whitney U-z test of Base Quality Bias (closer to 0 is better)">
+##INFO=<ID=MQSBZ,Number=1,Type=Float,Description="Mann-Whitney U-z test of Mapping Quality vs Strand Bias (closer to 0 is better)">
+##INFO=<ID=SCBZ,Number=1,Type=Float,Description="Mann-Whitney U-z test of Soft-Clip Length Bias (closer to 0 is better)">
+##INFO=<ID=SGB,Number=1,Type=Float,Description="Segregation based metric, http://samtools.github.io/bcftools/rd-SegBias.pdf">
+##INFO=<ID=MQ0F,Number=1,Type=Float,Description="Fraction of MQ0 reads (smaller is better)">
+##FORMAT=<ID=PL,Number=G,Type=Integer,Description="List of Phred-scaled genotype likelihoods">
+##FORMAT=<ID=AD,Number=R,Type=Integer,Description="Allelic depths (high-quality bases)">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##INFO=<ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+##INFO=<ID=AN,Number=1,Type=Integer,Description="Total number of alleles in called genotypes">
+##INFO=<ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+##INFO=<ID=MQ,Number=1,Type=Integer,Description="Average mapping quality">
+##bcftools_callVersion=1.22+htslib-1.22
+##bcftools_callCommand=call --ploidy 1 -v -m alignment/second/bcf/Exp3sh90KP3_S3_L001/sars-cov2-wa1-2020---Exp3sh90KP3_S3_L001.bcf; Date=Tue Jul  1 18:36:37 2025
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	alignment/second/bam/Exp3sh90KP3_S3_L001/sars-cov2-wa1-2020---Exp3sh90KP3_S3_L001.sorted.bam
+MT246667.1	23479	.	A	G	6.4817	.	DP=84;VDB=7.12062e-27;SGB=-0.693147;RPBZ=-7;MQBZ=-1.09277;BQBZ=0.993786;SCBZ=0;MQ0F=0.166667;AC=1;AN=1;DP4=1,0,49,0;MQ=17	GT:PL:AD	1:32,0:1,49
+MT246667.1	23484	.	T	C	30.4229	.	DP=114;VDB=1.4013e-45;SGB=-0.693147;MQ0F=0.0964912;AC=1;AN=1;DP4=0,0,53,0;MQ=21	GT:PL:AD	1:60,0:0,52
+MT246667.1	23484	.	T	TCTTCCGA	97.5569	.	INDEL;IDV=29;IMF=0.254386;DP=114;VDB=1.48934e-07;SGB=-0.683931;RPBZ=6.12365;MQBZ=4.66129;SCBZ=0;MQ0F=0.0964912;AC=1;AN=1;DP4=53,0,13,0;MQ=25	GT:PL:AD	1:125,0:53,13
+MT246667.1	23486	.	TTC	TGGTC	121.34	.	INDEL;IDV=72;IMF=0.605042;DP=119;VDB=1.21003e-25;SGB=-0.693145;RPBZ=-4.8728;MQBZ=-4.84268;BQBZ=-0.822317;SCBZ=0;MQ0F=0.092437;AC=1;AN=1;DP4=6,0,41,0;MQ=25	GT:PL:AD	1:190,42:6,28
+MT246667.1	23521	.	C	T	43.6253	.	DP=282;VDB=0;SGB=-0.693147;RPBZ=-3.29996;MQBZ=4.04478;MQSBZ=-2.89987;BQBZ=-1.61312;SCBZ=0;MQ0F=0.106383;AC=1;AN=1;DP4=100,5,162,3;MQ=33	GT:PL:AD	1:231,160:105,164
+MT246667.1	23602	.	C	T	49.7638	.	DP=317;VDB=0;SGB=-0.693147;RPBZ=-0.843217;MQBZ=-0.645824;MQSBZ=-1.54641;BQBZ=-0.884694;SCBZ=0;MQ0F=0.0378549;AC=1;AN=1;DP4=81,2,222,3;MQ=35	GT:PL:AD	1:156,79:83,225
