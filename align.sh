@@ -42,13 +42,15 @@ for BASE_FILE in "${BASE_FILES[@]}"; do
         echo "R2: $R2_FILE"
 
         OUTPUT_SAM="$OUTPUT_BASE/sam/$BASE_FILE/$(basename "$CURRENT_INDEX")---$BASE_FILE.sam"
+        OUTPUT_BAM="$OUTPUT_BASE/bam/$BASE_FILE/$(basename "$CURRENT_INDEX")---$BASE_FILE.bam"
         OUTPUT_RESULTS="$OUTPUT_BASE/results/$BASE_FILE/$(basename "$CURRENT_INDEX")---$BASE_FILE.results"
 
         echo "Output SAM: $OUTPUT_SAM"
         echo "Output Results: $OUTPUT_RESULTS"
 
-        mkdir -p "$OUTPUT_BASE/sam/$BASE_FILE" "$OUTPUT_BASE/results/$BASE_FILE"
-        time bowtie2 --threads 8 -x "$CURRENT_INDEX" -1 "$R1_FILE" -2 "$R2_FILE" -S "$OUTPUT_SAM" 2>&1 | tee "$OUTPUT_RESULTS"
+        mkdir -p "$OUTPUT_BASE/sam/$BASE_FILE" "$OUTPUT_BASE/bam/$BASE_FILE" "$OUTPUT_BASE/results/$BASE_FILE"
+        # time bowtie2 --threads 8 -x "$CURRENT_INDEX" -1 "$R1_FILE" -2 "$R2_FILE" -S "$OUTPUT_SAM" 2>&1 | tee "$OUTPUT_RESULTS"
+        samtools view -Sb "$OUTPUT_SAM" | samtools sort - > "$OUTPUT_BAM"
         echo
     done
 done
